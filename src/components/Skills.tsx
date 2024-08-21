@@ -182,22 +182,22 @@ const Skills = ({showSkills, setShowSkills}:ISkillsProps ) => {
                 <MdCloseFullscreen className='text-2xl text-white m-3'/>
             </button>            
         </div>
-        <div className='w-screen h-[calc(100vh_-_100px)] flex px-7 sm:px-20 mt-5'>
+        <div className='w-screen max-w-screen h-[calc(100vh_-_6em)] flex px-7 sm:px-20 mt-5'>
             <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-auto'>
-                <div className='flex w-screen flex-col'>
-                    <b className='text-2xl border-b-2 w-screen'>Frontend Skill</b>                
+                <div className='flex flex-col'>
+                    <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill</b>                
                     <SkillList list={listData}/>
                 </div>
-                <div className='flex w-screen flex-col'>
-                    <b className='text-2xl border-b-2 w-screen'>Frontend Frameworks</b>                
+                <div className='flex flex-col'>
+                    <b className='text-2xl border-b-2 max-sm:w-auto'>Frontend Frameworks</b>                
                     <SkillList list={listDataSecond}/>                                                    
                 </div>
-                <div className='flex w-screen flex-col'>
-                    <b className='text-2xl border-b-2 w-screen'>Backend Skills</b>                
+                <div className='flex flex-col'>
+                    <b className='text-2xl border-b-2 max-sm:w-auto'>Backend Skills</b>                
                     <SkillList list={listDataBackend}/>                                                    
                 </div>
-                <div className='flex w-screen flex-col'>
-                    <b className='text-2xl border-b-2 w-screen'>Other Skills</b>                
+                <div className='flex flex-col'>
+                    <b className='text-2xl border-b-2 max-sm:w-auto'>Other Skills</b>                
                     <SkillList list={listDataOther}/>                                                    
                 </div>
             </div>
