@@ -8,13 +8,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      keyframes: {
+        "pop-blob": {
+          "0%": { transform: "scale(1)" },
+          "33%": { transform: "scale(1.2)" },
+          "66%": { transform: "scale(0.8)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
+      animation: {                
+        "pop-blob": "pop-blob 5s infinite",
+      },
+      blur: {
+        "20": "20px",
+        "25": "25px",
+      },
+      colors: {
+        foreground: "hsl(var(--foreground))",
+      },
+        transitionTimingFunction: {
+          slow: "cubic-bezier(.405, 0, .025, 1)",
+          "minor-spring": "cubic-bezier(0.18,0.89,0.82,1.04)",
+      }
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
+
 export default config;
