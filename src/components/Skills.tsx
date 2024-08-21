@@ -158,20 +158,20 @@ const SkillList = ({list}: ISkillListProps) =>{
 }
 
 const Skills = ({showSkills, setShowSkills}:ISkillsProps ) => {
-    const divRef = useRef<HTMLDivElement>(null)
-    const handleEscape = () =>{
-        const target = document as Document
-        target.addEventListener('keydown', (event: KeyboardEvent)=>{                        
-            if(showSkills &&(event.code === 'code' || event.key === 'Escape' || event.keyCode == 27)){                
-                setShowSkills(false)                
-            }else{                
-                return false
-            }
-        })
-    }
+    const divRef = useRef<HTMLDivElement>(null)    
 
     useLayoutEffect(()=>{
         divRef?.current?.scrollTo(0,0)
+        const handleEscape = () =>{
+            const target = document as Document
+            target.addEventListener('keydown', (event: KeyboardEvent)=>{                        
+                if(showSkills &&(event.code === 'code' || event.key === 'Escape' || event.keyCode == 27)){                
+                    setShowSkills(false)                
+                }else{                
+                    return false
+                }
+            })
+        }
         handleEscape()
     }, [showSkills])
 
