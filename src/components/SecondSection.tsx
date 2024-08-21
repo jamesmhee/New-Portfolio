@@ -11,7 +11,7 @@ const SecondSection = () => {
         <div className='grow-0 sm:basis-2/4'>
             <p className='text-prety text-lg sm:text-xl text-wrap'>
                 <b className='mr-2'>
-                Hi I'm James (Fullstack Developer)
+                Hi I&apos;m James (Fullstack Developer)
                 </b> 
                 <br>
                 </br>               
