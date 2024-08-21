@@ -144,7 +144,7 @@ const listDataOther: ISkillListData[] = [
 
 const SkillList = ({list}: ISkillListProps) =>{
     return (
-        <div className='flex-wrap flex w-screen gap-2 py-5'>
+        <div className='flex-wrap flex gap-2 py-5'>
             {list.map((elm, index)=>(
                 <div key={index} className={'flex gap-2 w-max py-2 px-3 items-center justify-center rounded-lg ' + elm.color}>
                     {elm.icon}
@@ -183,7 +183,7 @@ const Skills = ({showSkills, setShowSkills}:ISkillsProps ) => {
             </button>            
         </div>
         <div className='w-screen h-[calc(100vh_-_100px)] flex px-7 sm:px-20 mt-5'>
-            <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-hidden'>
+            <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-auto'>
                 <div className='flex w-screen flex-col'>
                     <b className='text-2xl border-b-2 w-screen'>Frontend Skill</b>                
                     <SkillList list={listData}/>
