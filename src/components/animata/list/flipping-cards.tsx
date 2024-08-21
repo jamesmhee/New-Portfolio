@@ -8,6 +8,7 @@ import Link from "next/link";
 interface CardProps {
   show: React.ReactNode;
   reveal: React.ReactNode;
+  color: string
 }
 
 interface CardDetailsProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -18,13 +19,14 @@ interface CardDetailsProps extends React.HTMLAttributes<HTMLDivElement> {
   linkTo: string
   onClick?: ()=>void;
   index?: number;
+  color: string
 }
 
 interface FlippingCardProps {
   list: CardDetailsProps[];
 }
 
-const Card = ({ show, reveal }: CardProps) => {
+const Card = ({ color, show, reveal }: CardProps) => {
   const common = "absolute flex w-full h-full [backface-visibility:hidden] rounded-xl";
   return (
     <div className={cn("group h-60 w-48 [perspective:1000px]")}>
@@ -35,11 +37,7 @@ const Card = ({ show, reveal }: CardProps) => {
       >
         <div className={cn("bg-white", common)}>{show}</div>
         <div
-          className={cn("[transform:rotateY(180deg)]", common)}
-          style={{
-            // Note: Set your own color over here
-            backgroundColor: `#${(((1 << 24) * Math.random()) | 0).toString(16).padStart(6, "0")}`,
-          }}
+          className={cn("[transform:rotateY(180deg)]", common, color)}          
         >
           {reveal}
         </div>
@@ -48,9 +46,10 @@ const Card = ({ show, reveal }: CardProps) => {
   );
 };
 
-const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick }: CardDetailsProps) => {    
+const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick, color }: CardDetailsProps) => {    
   return (
     <Card
+      color={color}
       show={
         <div className="flex w-full flex-col border-[1px] px-3 py-4 text-sm rounded-xl">
           <span className="border-t-2 border-black pt-1">{font}</span>
@@ -93,7 +92,7 @@ const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick }: 
 
 export default function FlippingCard({ list }: FlippingCardProps) {
   return (
-    <div className="grid grid-cols-4 gap-5 max-sm:grid-cols-2">
+    <div className="grid md:grid-cols-4 gap-5 max-sm:grid-cols-1 sm:grid-cols-2">
       {list.map((item, index) => (
         <CardDetails          
           key={`card_${index}`}
@@ -104,6 +103,7 @@ export default function FlippingCard({ list }: FlippingCardProps) {
           linkTo={item.linkTo}
           textFront={item.textFront}
           onClick={item.onClick}
+          color={item.color}
         />
       ))}
     </div>
