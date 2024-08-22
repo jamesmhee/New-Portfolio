@@ -14,14 +14,14 @@ export default function BlurryBlob({
       <div className="relative w-full max-w-lg">
         <div
           className={cn(
-            "absolute -right-20 -top-0 h-72 w-full sm:w-72 animate-pop-blob rounded-full bg-yellow-400 p-8 opacity-100 mix-blend-multiply blur-3xl filter",
+            "absolute -right-20 -top-0 h-72 w-full sm:w-72 animate-pop-blob rounded-full bg-yellow-500 p-8 opacity-100 mix-blend-multiply blur-3xl filter",
             className,
             firstBlobColor,
           )}
         ></div>
         <div
           className={cn(
-            "absolute -left-40 -top-24 h-72 sm:w-72 animate-pop-blob rounded-full bg-yellow-200 p-8 opacity-100 mix-blend-multiply blur-3xl filter",
+            "absolute -left-40 -top-24 h-72 sm:w-72 animate-pop-blob rounded-full bg-blue-500 p-8 opacity-100 mix-blend-multiply blur-3xl filter",
             className,
             secondBlobColor,
           )}
