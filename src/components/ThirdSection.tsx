@@ -5,10 +5,12 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { FaMailBulk } from "react-icons/fa";
 import { RiBearSmileLine } from "react-icons/ri";
 import { GrVulnerability } from "react-icons/gr";
+import { BiSolidHappyBeaming } from "react-icons/bi";
 import Skills from './Skills';
 
 const ThirdSection = () => {
     const [showSkills, setShowSkills] = useState<boolean>(false)    
+    const [showProjects, setShowProjects] = useState<boolean>(false)    
     
     const DataList = [
         {
@@ -43,7 +45,16 @@ const ThirdSection = () => {
             linkTo: '/skills',
             onClick: ()=>setShowSkills(true),
             color: 'bg-gradient-to-b from-red-500 to-red-800'
-        }
+        },
+        {
+            font: 'PROJECT',
+            image: <BiSolidHappyBeaming className='text-white font-bold text-6xl'/>,
+            title: 'PJ',
+            textFront: 'My Projects',
+            linkTo: '/projects',
+            onClick: ()=>setShowProjects(true),
+            color: 'bg-gradient-to-b from-yellow-500 to-yellow-800'
+        },        
     ]
 
   return (
@@ -51,7 +62,8 @@ const ThirdSection = () => {
         <FlippingCard
             list={DataList}
         />
-        <Skills showSkills={showSkills} setShowSkills={()=> setShowSkills(!showSkills)}/>        
+        <Skills type={'skills'} showSkills={showSkills} setShowSkills={()=> setShowSkills(!showSkills)}/>
+        <Skills type={'projects'} showSkills={showProjects} setShowSkills={()=> setShowProjects(!showProjects)}/>        
         <div className='mt-10 text-[10px] text-black/50 flex items-center gap-2'>
             <pre>
                 jemmyblair

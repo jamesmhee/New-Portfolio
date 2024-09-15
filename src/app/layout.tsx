@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="img/png" href={icon} sizes="any" />
       </head>
-      <body className={inter.className + ' w-screen h-screen'}>
+      <body className={inter.className + ' w-screen h-dvh'}>
         {children}
       </body>
     </html>

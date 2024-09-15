@@ -68,7 +68,7 @@ const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick, co
             {font.split(" ")[0]}
           </Marquee>
             {
-              linkTo === '/skills'  ?
+              (linkTo === '/skills' || '/projects') ?
               (
                 <button onClick={onClick} className="flex items-center justify-between px-3">
                   <span className="text-white">See more</span>
@@ -92,7 +92,7 @@ const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick, co
 
 export default function FlippingCard({ list }: FlippingCardProps) {
   return (
-    <div className="grid md:grid-cols-4 gap-5 max-sm:grid-cols-1 sm:grid-cols-2">
+    <div className={`grid md:grid-cols-${list.length} gap-5 max-sm:grid-cols-1 sm:grid-cols-2`}>
       {list.map((item, index) => (
         <CardDetails          
           key={`card_${index}`}

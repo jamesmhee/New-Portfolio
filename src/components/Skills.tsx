@@ -7,17 +7,31 @@ import { TbApi } from "react-icons/tb";
 
 interface ISkillsProps{
     showSkills: boolean;
-    setShowSkills: (boolean:boolean)=>void
+    setShowSkills: (boolean:boolean)=>void;
+    type: string;
 }
 
 interface ISkillListProps{
     list: ISkillListData[]
 }
 
+
 interface ISkillListData{
     icon:  React.JSX.Element | React.JSX.Element[]
     color: string
     text: string
+}
+
+interface IProjectListProps{
+    list: IProjectListData[]
+}
+
+interface IProjectListData{
+    name: string
+    detail?: string
+    img?: unknown
+    github: string
+    link: string
 }
 
 const listData:ISkillListData[] = [
@@ -157,7 +171,24 @@ const SkillList = ({list}: ISkillListProps) =>{
     )
 }
 
-const Skills = ({showSkills, setShowSkills}:ISkillsProps ) => {
+const ProjectList = ({list}: IProjectListProps) =>{
+    return (
+        <div className='flex-wrap flex gap-2 py-5'>
+            {list.map((elm, index)=>(
+                <>
+                </>
+                // <div key={index} className={'flex gap-2 w-max py-2 px-3 items-center justify-center rounded-lg ' + elm.color}>
+                //     {elm.icon}
+                //     <span className='text-base'>
+                //         {elm.text}
+                //     </span>
+                // </div>
+            ))}
+        </div>
+    )
+}
+
+const Skills = ({showSkills, setShowSkills, type}:ISkillsProps ) => {
     const divRef = useRef<HTMLDivElement>(null)    
 
     useLayoutEffect(()=>{
@@ -182,27 +213,42 @@ const Skills = ({showSkills, setShowSkills}:ISkillsProps ) => {
                 <MdCloseFullscreen className='text-2xl text-white m-3'/>
             </button>            
         </div>
-        <div className='w-screen max-w-screen h-[calc(100vh_-_6em)] flex px-7 sm:px-20 mt-5'>
+        <div className='w-screen max-w-screen h-[calc(100vh_-_6em)] flex px-7 sm:px-20 mt-5'>            
             <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-auto'>
-                <div className='flex flex-col'>
-                    <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill</b>                
-                    <SkillList list={listData}/>
-                </div>
-                <div className='flex flex-col'>
-                    <b className='text-2xl border-b-2 max-sm:w-auto'>Frontend Frameworks</b>                
-                    <SkillList list={listDataSecond}/>                                                    
-                </div>
-                <div className='flex flex-col'>
-                    <b className='text-2xl border-b-2 max-sm:w-auto'>Backend Skills</b>                
-                    <SkillList list={listDataBackend}/>                                                    
-                </div>
-                <div className='flex flex-col'>
-                    <b className='text-2xl border-b-2 max-sm:w-auto'>Other Skills</b>                
-                    <SkillList list={listDataOther}/>                                                    
-                </div>
+                {type === 'skills' ? 
+                (
+                <>
+                    <div className='flex flex-col'>
+                        <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill</b>                
+                        <SkillList list={listData}/>
+                    </div>
+                    <div className='flex flex-col'>
+                        <b className='text-2xl border-b-2 max-sm:w-auto'>Frontend Frameworks</b>                
+                        <SkillList list={listDataSecond}/>                                                    
+                    </div>
+                    <div className='flex flex-col'>
+                        <b className='text-2xl border-b-2 max-sm:w-auto'>Backend Skills</b>                
+                        <SkillList list={listDataBackend}/>                                                    
+                    </div>
+                    <div className='flex flex-col'>
+                        <b className='text-2xl border-b-2 max-sm:w-auto'>Other Skills</b>                
+                        <SkillList list={listDataOther}/>                                                    
+                    </div>
+                </>
+                )
+                :
+                (
+                <>
+                    <div className='flex flex-col'>
+                        <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>My Projects</b>                
+                        <ProjectList list={[]}/>
+                    </div>
+                </>
+                )
+                }                
             </div>
         </div>
-    </div>
+    </div>    
   )
 }
 
