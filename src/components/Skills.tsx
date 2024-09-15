@@ -204,7 +204,7 @@ const Skills = ({showSkills, setShowSkills, type}:ISkillsProps ) => {
             })
         }
         handleEscape()
-    }, [showSkills])
+    }, [showSkills, setShowSkills])
 
   return (
     <div className={(showSkills ? 'opacity-100 z-2' : 'opacity-0 z-[-1]') + ' transition-opacity duration-500 fixed text-2xl top-0 right-0 bg-black/85 min-w-screen min-h-screen' }>        
