@@ -1,9 +1,15 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { MdCloseFullscreen } from "react-icons/md";
-import { FaReact, FaHtml5, FaCss3Alt, FaNode } from "react-icons/fa";
+import { FaReact, FaHtml5, FaCss3Alt, FaNode, FaTools } from "react-icons/fa";
 import { BiLogoJavascript } from "react-icons/bi";
 import { SiTypescript, SiTailwindcss, SiAntdesign, SiJquery, SiBootstrap,SiMui, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiPrisma, SiGit, SiGithub, SiDocker, SiPostman, SiFigma, SiNestjs } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
+import { IoMdLink } from "react-icons/io";
+import TodoApp from "../assets/imgs/TodoApp.png"
+import Pokedex from "../assets/imgs/Pokedex.png"
+import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+import StackUse from './StackUse';
 
 interface ISkillsProps{
     showSkills: boolean;
@@ -28,11 +34,32 @@ interface IProjectListProps{
 
 interface IProjectListData{
     name: string
+    stack: string[]
     detail?: string
-    img?: unknown
+    img: StaticImageData
     github: string
     link: string
 }
+
+const ProjectListData: IProjectListData[] = [
+    {
+        name: "Todo App",
+        stack: ["ReactJS", "TailwindCSS", "Material UI", "Zustand"],
+        detail: "This Project create for learn state management (zustand) and Material UI",
+        img: TodoApp,
+        github: "https://github.com/jamesmhee/todoapp_zustand",
+        link: "https://todo.jemmyblair.xyz"
+    },
+    {
+        name: "Pokedex App",
+        stack: ["NextJS", "TailwindCSS", "Ant Design", "GraphQL"],
+        detail: "This Project create for learn Basic GraphQL API",
+        img: Pokedex,
+        github: "https://github.com/jamesmhee/pokedex-nextjs",
+        link: "https://pokedex-nextjs-topaz.vercel.app/"
+    },
+
+]
 
 const listData:ISkillListData[] = [
     {
@@ -182,17 +209,41 @@ const SkillList = ({list}: ISkillListProps) =>{
 }
 
 const ProjectList = ({list}: IProjectListProps) =>{
+    console.log(list.map((elm, index)=>elm))
     return (
-        <div className='flex-wrap flex gap-2 py-5'>
+        <div className='flex-wrap flex-col flex gap-2 py-5'>
             {list.map((elm, index)=>(
                 <>
-                </>
-                // <div key={index} className={'flex gap-2 w-max py-2 px-3 items-center justify-center rounded-lg ' + elm.color}>
-                //     {elm.icon}
-                //     <span className='text-base'>
-                //         {elm.text}
-                //     </span>
-                // </div>
+                    <div className='w-full flex-1 flex max-lg:flex-col gap-5 my-5 border-2' key={index}>
+                        <Image src={elm.img.src} className='max-lg:w-screen' width={500} height={300} alt={elm.name + 'img'}/>
+                        <div className='text-base flex gap-4 flex-col p-2'>                            
+                            <div className='text-3xl max-sm:text-2xl inline-flex gap-2 w-fit'> 
+                                {elm.name}                                
+                                <Link href={elm.link} target='_blank'>
+                                    <IoMdLink className='text-2xl inline-flex'/>
+                                </Link>
+                            </div>                            
+                            <p className='text-base'>
+                                {elm.detail}
+                            </p>
+                            <div className='flex max-sm:flex-col gap-2 items-center max-sm:items-start'>
+                                <FaTools className='text-xl'/>
+                                <StackUse list={elm.stack}/>
+                            </div>
+                            <div className='flex items-center gap-3 flex-wrap'>                                
+                                <SiGithub className='flex-0 text-xl'/>
+                                <div className='flex-auto'>
+                                    <Link href={elm.github} className='text-base' target="_blank">
+                                        <span className='mr-2'>
+                                            {elm.github}
+                                        </span>
+                                        <IoMdLink className='inline-flex my-auto'/>                                    
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>                
             ))}
         </div>
     )
@@ -223,11 +274,11 @@ const Skills = ({showSkills, setShowSkills, type}:ISkillsProps ) => {
                 <MdCloseFullscreen className='text-2xl text-white m-3'/>
             </button>            
         </div>
-        <div className='w-screen max-w-screen h-[calc(100vh_-_6em)] flex px-7 sm:px-20 mt-5'>            
-            <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-auto'>
+        <div className='w-screen h-[calc(100vh_-_6em)] flex px-7 sm:px-20 mt-5'>            
+            <div ref={divRef} className='flex gap-5 text-white flex-col overflow-y-scroll overflow-x-hidden'>
                 {type === 'skills' ? 
                 (
-                <>
+                <div className=''>
                     <div className='flex flex-col'>
                         <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill</b>                
                         <SkillList list={listData}/>
@@ -244,14 +295,14 @@ const Skills = ({showSkills, setShowSkills, type}:ISkillsProps ) => {
                         <b className='text-2xl border-b-2 max-sm:w-auto'>Other Skills</b>                
                         <SkillList list={listDataOther}/>                                                    
                     </div>
-                </>
+                </div>
                 )
                 :
                 (
                 <>
                     <div className='flex flex-col'>
                         <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>My Projects</b>                
-                        <ProjectList list={[]}/>
+                        <ProjectList list={ProjectListData}/>
                     </div>
                 </>
                 )
