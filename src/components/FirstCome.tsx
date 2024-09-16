@@ -10,7 +10,7 @@ interface FirstComeProps {
 
 const FirstCome = ({isShow, onClick, isLoading}: FirstComeProps) => {
   return (
-    <div className='flex items-center flex-col gap-5 justify-center w-screen h-dvh'>
+    <div className='flex items-center flex-col gap-5 justify-center w-screen h-dvh overflow-hidden'>
         <div className="max-sm:min-w-72 min-w-96 max-w-max rounded bg-black px-4 py-2 text-yellow-400 shadow-lg text-[13.5px]">
             <TypingText
                 className="text-white"

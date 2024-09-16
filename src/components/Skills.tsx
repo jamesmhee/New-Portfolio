@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 import { MdCloseFullscreen } from "react-icons/md";
 import { FaReact, FaHtml5, FaCss3Alt, FaNode } from "react-icons/fa";
 import { BiLogoJavascript } from "react-icons/bi";
-import { SiTypescript, SiTailwindcss, SiAntdesign, SiJquery, SiBootstrap, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiPrisma, SiGit, SiGithub, SiDocker, SiPostman, SiFigma } from "react-icons/si";
+import { SiTypescript, SiTailwindcss, SiAntdesign, SiJquery, SiBootstrap,SiMui, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiPrisma, SiGit, SiGithub, SiDocker, SiPostman, SiFigma, SiNestjs } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
 interface ISkillsProps{
@@ -79,6 +79,11 @@ const listDataSecond:ISkillListData[] = [
         text: 'AntDesign'
     },
     {
+        icon: <SiMui/>,
+        color: 'bg-gradient-to-r from-blue-500 to-blue-700',
+        text: 'MUI'
+    },
+    {
         icon: <SiJquery/>,
         color: 'bg-gradient-to-r from-blue-500 to-blue-700',
         text: 'jQuery'
@@ -100,6 +105,11 @@ const listDataBackend:ISkillListData[] = [
         icon: <SiExpress/>,
         color: 'bg-gradient-to-r from-zinc-500 to-zinc-700',
         text: 'Express.JS'
+    },
+    {
+        icon: <SiNestjs/>,
+        color: 'bg-gradient-to-r from-red-500 to-red-700',
+        text: 'Nest.JS'
     },
     {
         icon: <SiPostgresql/>,
@@ -152,7 +162,7 @@ const listDataOther: ISkillListData[] = [
     {
         icon: <SiFigma/>,
         color: 'bg-gradient-to-r from-orange-500 via-violet-500 to-lime-700',
-        text: 'Postman'
+        text: 'Figma'
     },
 ]
 
