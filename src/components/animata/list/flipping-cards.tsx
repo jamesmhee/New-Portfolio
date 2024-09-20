@@ -47,6 +47,7 @@ const Card = ({ color, show, reveal }: CardProps) => {
 };
 
 const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick, color }: CardDetailsProps) => {    
+  console.log(linkTo === "/skills" && "/projects" ? 'true' : 'false', linkTo)
   return (
     <Card
       color={color}
@@ -68,16 +69,16 @@ const CardDetails = ({ title, image, font, index, linkTo, textFront, onClick, co
             {font.split(" ")[0]}
           </Marquee>
             {
-              (linkTo === '/skills' || '/projects') ?
+              ["/projects","/skills"].includes(linkTo) ?
               (
                 <button onClick={onClick} className="flex items-center justify-between px-3">
                   <span className="text-white">See more</span>
-                  <CircleArrowRight size={18} color="white" />
+                  <CircleArrowRight size={18} color="white" />                  
                 </button>
               ) : 
               (
                 <Link href={linkTo} target="_blank">
-                    <div className="flex items-center justify-between px-3">
+                    <div className="flex items-center justify-between px-3">                      
                       <span className="text-white">See more</span>
                       <CircleArrowRight size={18} color="white" />
                     </div>

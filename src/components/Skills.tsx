@@ -219,8 +219,7 @@ const SkillList = ({list}: ISkillListProps) =>{
     )
 }
 
-const ProjectList = ({list}: IProjectListProps) =>{
-    console.log(list.map((elm, index)=>elm))
+const ProjectList = ({list}: IProjectListProps) =>{    
     return (
         <div className='flex-wrap flex-col flex gap-2 py-5'>
             {list.map((elm, index)=>(
