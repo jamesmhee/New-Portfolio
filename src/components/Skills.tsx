@@ -1,8 +1,9 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { MdCloseFullscreen } from "react-icons/md";
 import { FaReact, FaHtml5, FaCss3Alt, FaNode, FaTools } from "react-icons/fa";
+import { FaGolang } from "react-icons/fa6";
 import { BiLogoJavascript } from "react-icons/bi";
-import { SiTypescript, SiTailwindcss, SiAntdesign, SiJquery, SiBootstrap,SiMui, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiPrisma, SiGit, SiGithub, SiDocker, SiPostman, SiFigma, SiNestjs } from "react-icons/si";
+import { SiTypescript, SiTailwindcss,SiPython, SiAntdesign, SiJquery, SiBootstrap,SiMui, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiPrisma, SiGit, SiGithub, SiDocker, SiPostman, SiFigma, SiNestjs } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { IoMdLink } from "react-icons/io";
 import TodoApp from "../assets/imgs/TodoApp.png"
@@ -81,6 +82,16 @@ const listData:ISkillListData[] = [
         icon: <SiTypescript/>,
         color: 'bg-gradient-to-r from-blue-500 to-blue-700',
         text: 'TypeScript'        
+    },
+    {
+        icon: <SiPython/>,
+        color: 'bg-gradient-to-r from-blue-500 to-blue-700',
+        text: 'Python (Basic Programming)'
+    },
+    {
+        icon: <FaGolang/>,
+        color: 'bg-gradient-to-r from-blue-700 to-blue-900',
+        text: 'Golang (Basic Programming)'
     },
 ]
 
@@ -215,7 +226,7 @@ const ProjectList = ({list}: IProjectListProps) =>{
             {list.map((elm, index)=>(
                 <>
                     <div className='w-full flex-1 flex max-lg:flex-col gap-5 my-5 border-2' key={index}>
-                        <Image src={elm.img.src} className='max-lg:w-screen' width={500} height={300} alt={elm.name + 'img'}/>
+                        <Image src={elm.img.src} className='h-full w-full lg:max-w-[250px] lg:max-height-[300px]' width={600} height={300} alt={elm.name + 'img'}/>
                         <div className='text-base flex gap-4 flex-col p-2'>                            
                             <div className='text-3xl max-sm:text-2xl inline-flex gap-2 w-fit'> 
                                 {elm.name}                                
@@ -280,7 +291,7 @@ const Skills = ({showSkills, setShowSkills, type}:ISkillsProps ) => {
                 (
                 <div className=''>
                     <div className='flex flex-col'>
-                        <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill</b>                
+                        <b className='text-2xl border-b-2 w-screen max-sm:w-auto'>Frontend Skill & Programming Language</b>                
                         <SkillList list={listData}/>
                     </div>
                     <div className='flex flex-col'>
