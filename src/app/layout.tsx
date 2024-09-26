@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 const icon = `https://icons.iconarchive.com/icons/pictogrammers/material/256/teddy-bear-icon.png`
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,8 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">      
+    <html lang="en">          
       <head>
+        <GoogleAnalytics/>
         <link rel="icon" type="img/png" href={icon} sizes="any" />
       </head>
       <body className={inter.className + ' w-screen h-dvh'}>
