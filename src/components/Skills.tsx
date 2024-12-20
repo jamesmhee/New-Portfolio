@@ -7,6 +7,7 @@ import { SiTypescript, SiTailwindcss,SiPython, SiAntdesign, SiJquery, SiBootstra
 import { TbApi } from "react-icons/tb";
 import { IoMdLink } from "react-icons/io";
 import TodoApp from "../assets/imgs/TodoApp.png"
+import MobileView from "../assets/imgs/MobileView.png"
 import Pokedex from "../assets/imgs/Pokedex.png"
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -43,6 +44,14 @@ interface IProjectListData{
 }
 
 const ProjectListData: IProjectListData[] = [
+    {
+        name: "Mobile View",
+        stack: ["NextJS", "Tanstack Query", "TailwindCSS", "ShadCN"],
+        detail: "Learning how to use tanstack query to handle services and store cache",
+        img: MobileView,
+        github: "https://github.com/jamesmhee/responsive-ui",
+        link: "https://responsive-ui-lake.vercel.app/"
+    },
     {
         name: "Todo App",
         stack: ["ReactJS", "TailwindCSS", "Material UI", "Zustand"],
@@ -225,7 +234,7 @@ const ProjectList = ({list}: IProjectListProps) =>{
             {list.map((elm, index)=>(
                 <>
                     <div className='w-full flex-1 flex max-lg:flex-col gap-5 my-5 border-2' key={index}>
-                        <Image src={elm.img.src} className='h-full w-full lg:max-w-[250px] lg:max-height-[300px]' width={600} height={300} alt={elm.name + 'img'}/>
+                        <Image src={elm.img.src} className='w-full h-[300px] lg:w-[250px] max-h-[300px] object-contain bg-zinc-100' width={600} height={300} alt={elm.name + 'img'}/>
                         <div className='text-base flex gap-4 flex-col p-2'>                            
                             <div className='text-3xl max-sm:text-2xl inline-flex gap-2 w-fit'> 
                                 {elm.name}                                
